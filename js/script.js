@@ -91,7 +91,7 @@ if(localStorage.getItem('bookMarks') === null){
 }
 }
 bookmarkForm.reset();
-new Toaster("Bookmark created Sucessdfully","success")
+new Toaster("Bookmark created successfully","success")
 fetchbookMarks()
 }
 
