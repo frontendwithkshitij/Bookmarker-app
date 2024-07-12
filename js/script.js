@@ -127,6 +127,7 @@ return true
 }
 
 let toastElement = null;
+let toastTimeout = null; 
 
 function Toaster(message, className) {
     if (!toastElement) {
@@ -134,23 +135,35 @@ function Toaster(message, className) {
         document.body.appendChild(toastElement);
     }
     toastElement.className = className;
+    toastElement.style.display = "block"; 
     toastElement.innerHTML = ''; 
 
     const div = document.createElement('div');
+    let overlay = document.getElementById('overlay')
+
     
-    div.innerHTML = message;
+    div.innerHTML = `<i class="fa fa-remove" onclick="removeToaster(overlay)" style="margin-right:10px;font-size:17px"></i>${message}`;
     toastElement.appendChild(div);
     if(className == 'error'){
-      const overlay = document.getElementById('overlay')
-    overlay.style.display = "block" 
+      overlay.style.display = "block" 
     }
 
     // Remove the toast after 3 seconds
     
-    setTimeout(() => {
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+    }
+
+    // Remove the toast after 3 seconds
+    toastTimeout = setTimeout(() => {
         toastElement.innerHTML = '';
         toastElement.className = '';
-        overlay.style.display = "none"
-    }, 2000)
+        toastElement.style.display = "none";
+        overlay.style.display = "none";
+    }, 3000);
+}
 
+function removeToaster(overlay){
+   toastElement.style.display = "none";
+    overlay.style.display = "none";
 }
