@@ -1,10 +1,10 @@
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
     background: linear-gradient(to bottom, #287CB3 0%, #11354D 100%);
     min-height: 100vh;
     font-family: "Inter", sans-serif;
-    position: relative;
+    background-attachment: fixed;   /* 👈 yeh line add karo */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -143,7 +143,7 @@ form .submit {
 
 input::placeholder {
     padding-left: 1rem;
-    color: #A2A5A8;
+    color: #7D8A96;
     font-weight: 400;
     font-size: 16px !important;
 }
@@ -207,6 +207,12 @@ input::placeholder {
     .container h3 {
         text-align: center;
         font-size: 20px;
+    }
+    .card-content h4{
+        font-size: 16px;
+    }
+    .card-content span{
+        font-size: 11px;
     }
 
     .container {
